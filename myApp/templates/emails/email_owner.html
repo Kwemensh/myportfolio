@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:#0f172a;">
+    <h2 style="margin:0 0 12px;">New portfolio inquiry — {{ site }}</h2>
+    <p><strong>From:</strong> {{ data.full_name }} &lt;{{ data.email }}&gt;</p>
+    <p><strong>Company:</strong> {{ data.company|default:"—" }}</p>
+    <p><strong>Services:</strong>
+      {% if data.services %} {{ data.services|join:", " }} {% else %} — {% endif %}
+    </p>
+    <hr style="border:none;border-top:1px solid #e2e8f0; margin:16px 0;">
+    <p style="white-space: pre-wrap; margin:0;">{{ data.message }}</p>
+  </body>
+</html>

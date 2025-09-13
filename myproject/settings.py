@@ -118,3 +118,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FROM_EMAIL = "no-reply@yourdomain.com"
+PORTFOLIO_OWNER_EMAIL = "you@yourdomain.com"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # during development
+
+# settings.py
+import os
+
+EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")          # your Gmail address
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")  # 16-char App Password
+EMAIL_TIMEOUT = 15
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or "no-reply@example.com"
+PORTFOLIO_OWNER_EMAIL = os.getenv("PORTFOLIO_OWNER_EMAIL", EMAIL_HOST_USER or "owner@example.com")

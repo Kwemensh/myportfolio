@@ -1,0 +1,6 @@
+Hi {{ data.full_name }},
+
+Thanks for reaching out! Your message has landed safely in my inbox.
+I'll get back to you within 24 hours.
+
+— {{ site }}

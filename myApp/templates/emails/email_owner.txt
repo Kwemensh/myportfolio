@@ -1,0 +1,12 @@
+New portfolio inquiry — {{ site }}
+
+From: {{ data.full_name }} <{{ data.email }}>
+Company: {{ data.company|default:"—" }}
+
+Services:
+{% if data.services %}- {{ data.services|join:", " }}{% else %}—{% endif %}
+
+Message:
+{{ data.message }}
+
+(Reply directly to this email to respond.)
